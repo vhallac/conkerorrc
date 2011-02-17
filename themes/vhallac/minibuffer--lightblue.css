@@ -1,0 +1,15 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#minibuffer {
+    border-style: inset;
+    border-width: 1px;
+    background-color: lightblue;
+}
+
+#minibuffer-input {
+    background-color: lightblue !important;
+}
+
+.completions {
+    background-color: lightred !important;
+}

@@ -1,0 +1,6 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.mode-line {
+    border-style: outset;
+    border-width: 1px;
+}
