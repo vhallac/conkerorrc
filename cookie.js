@@ -77,33 +77,34 @@ cookies_foreach (
 
 */
 
+
 /* Allow perma-cookies from sites that are not very important or are trusted. */
 var cookie_perm = Components.classes["@mozilla.org/cookie/permission;1"].createInstance();
+function cookie_keep(urlStr)
+{
+    cookie_perm.setAccess(make_uri(urlStr), cookie_perm.ACCESS_ALLOW);
+}
+
+function cookie_deny(urlStr)
+{
+    cookie_perm.setAccess(make_uri(urlStr), cookie_perm.ACCESS_DENY);
+}
+
 cookie_perm.QueryInterface(Components.interfaces.nsICookiePermission);
-cookie_perm.setAccess(make_uri("http://www.zebraguild.com"),
-                      cookie_perm.ACCESS_ALLOW);
-cookie_perm.setAccess(make_uri("http://wowace.com"),
-                      cookie_perm.ACCESS_ALLOW);
-cookie_perm.setAccess(make_uri("http://curse.com"),
-                      cookie_perm.ACCESS_ALLOW);
-cookie_perm.setAccess(make_uri("http://wow.curse.com"),
-                      cookie_perm.ACCESS_ALLOW);
-cookie_perm.setAccess(make_uri("http://stumbleupon.com"),
-                      cookie_perm.ACCESS_ALLOW);
+cookie_keep("http://www.zebraguild.com");
+cookie_keep("http://wowace.com");
+cookie_keep("http://forums.wowace.com");
+cookie_keep("http://curse.com");
+cookie_keep("http://wow.curse.com");
+cookie_keep("http://stumbleupon.com");
+cookie_keep("http://zebra.wowstead.com");
 
 /* And don't allow access from these sites */
-cookie_perm.setAccess(make_uri("http://lijit.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://addthis.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://tynt.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://competitor.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://robtex.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://scorecardresearch.com"),
-                      cookie_perm.ACCESS_DENY);
-cookie_perm.setAccess(make_uri("http://quantserve.com"),
-                      cookie_perm.ACCESS_DENY);
+cookie_deny("http://lijit.com");
+cookie_deny("http://addthis.com");
+cookie_deny("http://tynt.com");
+cookie_deny("http://competitor.com");
+cookie_deny("http://robtex.com");
+cookie_deny("http://scorecardresearch.com");
+cookie_deny("http://quantserve.com");
 
