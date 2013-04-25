@@ -1,5 +1,3 @@
-add_delicious_webjumps("mvhallac");
-
 define_webjump("emacswiki",
     "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search&siteurl=emacswiki.org%2F",
     $alternative="http://www.emacswiki.org/");
@@ -32,7 +30,7 @@ define_webjump("curse", "http://wow.curse.com/downloads/wow-addons/SearchResults
 define_webjump("progress", "http://www.wowprogress.com/pve/eu/bloodfeather");
 /* StumbleUpon */
 define_webjump("stumble", "http://www.stumbleupon.com/to/stumble/go/")
-define_webjump("stumble_like", 
+define_webjump("stumble_like",
                "javascript:document.location.href='http://www.stumbleupon.com/submit?url='+document.URL+'&title='+document.title.replace(/%20/g,'+');")
 define_webjump("stumble_reviews",
                "javascript:(function(){url=document.location.href.split('://');document.location.href='http://www.stumbleupon.com/url/'+escape(url[1]);})();")
