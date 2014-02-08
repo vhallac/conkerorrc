@@ -91,13 +91,7 @@ function cookie_deny(urlStr)
 }
 
 cookie_perm.QueryInterface(Components.interfaces.nsICookiePermission);
-cookie_keep("http://www.zebraguild.com");
-cookie_keep("http://wowace.com");
-cookie_keep("http://forums.wowace.com");
-cookie_keep("http://curse.com");
-cookie_keep("http://wow.curse.com");
 cookie_keep("http://stumbleupon.com");
-cookie_keep("http://zebra.wowstead.com");
 
 /* And don't allow access from these sites */
 cookie_deny("http://lijit.com");
@@ -107,4 +101,3 @@ cookie_deny("http://competitor.com");
 cookie_deny("http://robtex.com");
 cookie_deny("http://scorecardresearch.com");
 cookie_deny("http://quantserve.com");
-
