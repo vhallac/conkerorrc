@@ -22,12 +22,7 @@ define_webjump("wayback",
 
 define_webjump("imdb", "http://imdb.com/find?q=%s");
 define_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
-define_webjump("github", "http://github.com/%s");
-define_webjump("wows", "http://www.wowhead.com/spell=%s");
-define_webjump("wowi", "http://www.wowhead.com/item=%s");
-define_webjump("wowhead", "http://www.wowhead.com/search?q=%s");
-define_webjump("curse", "http://wow.curse.com/downloads/wow-addons/SearchResults.aspx?q=%s");
-define_webjump("progress", "http://www.wowprogress.com/pve/eu/bloodfeather");
+define_webjump("github", "https://github.com/search?q=%s");
 /* StumbleUpon */
 define_webjump("stumble", "http://www.stumbleupon.com/to/stumble/go/")
 define_webjump("stumble_like",
@@ -39,6 +34,6 @@ define_webjump("deb-pkg-all", "http://packages.debian.org/search?keywords=%s&sea
 define_webjump("deb-pkg-backports", "http://packages.debian.org/search?keywords=%s&searchon=names&suite=squeeze-backports&section=all")
 define_webjump("deb-file", "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=stable&arch=any")
 define_webjump("deb-file-testing", "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=testing&arch=any")
-
+define_webjump("g", "https://www.google.com/search?q=%s")
 /* default webjump */
 read_url_handler_list = [read_url_make_default_webjump_handler("google")];
