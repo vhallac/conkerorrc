@@ -18,6 +18,11 @@ interactive("find-url-from-history-new-buffer",
             "find-url-new-buffer",
             $browser_object = browser_object_history_url);
 
+// Use * 8 h f to select page from history
+define_key(content_buffer_normal_keymap, "* 8 h", "browser-object-history-url");
+
+// This is not an interactive function intentionally.
+// Use M-: to indicate caller knows what (s)he is doing.
 function history_clear () {
     var history = Cc["@mozilla.org/browser/nav-history-service;1"]
         .getService(Ci.nsIBrowserHistory);
