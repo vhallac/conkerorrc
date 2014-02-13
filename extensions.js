@@ -16,5 +16,5 @@ if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
   var mozrepl = Cc['@hyperstruct.net/mozlab/mozrepl;1']
     .getService(Ci.nsIMozRepl);
   if (! mozrepl.isActive())
-    mozrepl.start(4242);
+    mozrepl.start(4242, true);
 }
