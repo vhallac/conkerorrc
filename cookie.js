@@ -42,6 +42,32 @@ function cookies_filter_destructive (callback) {
     }
 }
 
+find_cookie = function(host, cookieName) {
+    var cookies = cookie_manager.getCookiesFromHost(host);
+    while (cookies.hasMoreElements()) {
+        var cookie = cookies.getNext().QueryInterface(Ci.nsICookie2);
+        if (cookie.name === cookieName) {
+            return cookie;
+        }
+    }
+}
+
+save_cookie = function(cookie, overrides) {
+    var obj = cookie.QueryInterface(Ci.nsICookie2);
+    var vals = {
+        host: obj.host, path: obj.path, name: obj.name, value: obj.value,
+        isSecure: obj.isSecure, isHttpOnly: obj.isHttpOnly, isSession: obj.isSession,
+        expiry: obj.expiry
+    };
+    for (var key in overrides) {
+        vals[key] = overrides[key];
+    }
+    if (obj) {
+        cookie_manager.add(vals.host, vals.path, vals.name, vals.value,
+                           vals.isSecure, vals.isHttpOnly, vals.isSession,
+                           vals.expiry);
+    }
+}
 
 /*
 
