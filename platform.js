@@ -1,26 +1,4 @@
 
-var dnsComp = Components.classes["@mozilla.org/network/dns-service;1"];
-var dnsSvc = dnsComp.getService(Components.interfaces.nsIDNSService);
-
-function get_host_name() {
-    return dnsSvc.myHostName;
-}
-
-function make_path(base, parts) {
-    let (path = base) {
-        parts.forEach(function(dir) {
-            path.appendRelativePath(dir);
-        });
-        return path;
-    }
-}
-
-function get_config_path(parts) {
-    parts.unshift(".conkerorrc")
-    return make_path(get_home_directory(), parts);
-}
-
-
 function load_platform_config() {
     var cfg_name = "unknown-platform";
     if (WINDOWS) {
