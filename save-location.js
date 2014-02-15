@@ -1,20 +1,18 @@
 // Remember the last save location
-{
-   let _save_path = get_home_directory();
-   let _custom_dl_dir = getenv("DOWNLOADDIR")
-   if (_custom_dl_dir) {
-       _save_path = _custom_dl_dir
-   }
+(function() {
+    var _home_path = get_home_directory();
+    var _env_download_dir = getenv("DOWNLOADDIR");
 
-   function update_save_path(info) {
-       _save_path = info.target_file.parent.path;
-   }
+    // Construct a sensible initial save path
+    var _save_path = custom_save_path || _env_download_dir || _home_path;
 
-   add_hook("download_added_hook", update_save_path);
+    add_hook("download_added_hook", function(info) {
+        _save_path = info.target_file.parent.path;
+    });
 
-   suggest_save_path_from_file_name = function (filename, buffer) {
-       let file = make_file(_save_path);
-       file.append(filename);
-       return file.path;
-   }
-}
+    suggest_save_path_from_file_name = function (filename, buffer) {
+        var file = make_file(_save_path);
+        file.append(filename);
+        return file.path;
+    }
+})();
