@@ -42,3 +42,19 @@ interactive("proxy-toggle-all", "toggle proxy usage",
             function (I) {
                 toggle_proxy("all.pac");
             });
+
+function inject_css(document, css_text) {
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = css_text;
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(style);
+}
+
+interactive("inject-css", "Add temporary CSS snippets to page (you could use firebug for trickier CSS)",
+            function(I) {
+                var css_text = yield I.minibuffer.read(
+                    $prompt = "CSS: ",
+                    $history = "css-snippet");
+                inject_css(I.buffer.document, css_text);
+            });
