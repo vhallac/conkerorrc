@@ -28,6 +28,7 @@ function elementText(el) {
 
 function childElements(el) {
   var result = new Array();
+  if (el) {
   assert(el.nodeType == el.ELEMENT_NODE);
   var childNodes = el.childNodes;
   for (let i = 0; i < childNodes.length; ++i) {
@@ -35,6 +36,7 @@ function childElements(el) {
     if (child.nodeType == child.ELEMENT_NODE) {
       result.push(child);
     }
+  }
   }
   return result;
 }
@@ -60,15 +62,12 @@ function parseBookmarks(xml){
 }
 function parseBookmarksDoc(doc) {
   var result = new Array();
-  var bookmarkels = doc.getElementsByTagName('bookmark');
-  for (let i = 0; i < bookmarkels.length; ++i) {
-    let bookmarkel = bookmarkels[i];
-    result.push(parseBookmarkElement(bookmarkel));
-  }
-  return result;
+  var bookmarkels = doc.getElementsByTagName('bookmarks');
+  return parseBookmarkElements(bookmarkels[0]);
 }
 
-function parseBookmarkElement(bookmarkel) {
+function parseBookmarkElements(bookmarkel) {
+  var result = new Array();
   var title;
   var url;
   var timestamp;
@@ -80,6 +79,15 @@ function parseBookmarkElement(bookmarkel) {
     var childel = children[i];
     switch(childel.nodeName) {
     case 'title':
+      if (title != null) {
+	result.push({
+	  title: title,
+	  url: url,
+	  labels: labels,
+	  id: id,
+	  timestamp: timestamp
+	});
+      }
       title = elementText(childel);
       break;
     case 'url':
@@ -99,13 +107,17 @@ function parseBookmarkElement(bookmarkel) {
       break;
     }
   }
-  return {
-    title: title,
-    url: url,
-    labels: labels,
-    id: id,
-    timestamp: timestamp
-  };
+  // Push the last one
+  if (title != null) {
+    result.push({
+      title: title,
+      url: url,
+      labels: labels,
+      id: id,
+      timestamp: timestamp
+    });
+  }
+  return result;
 }
 
 function parseListElement(parentel, expectedNodeName) {
@@ -185,15 +197,24 @@ interactive('goto-google-bookmark',
 define_key(content_buffer_normal_keymap, 'p', 'goto-google-bookmark');
 
 function make_google_bookmark(I) {
-    var d = I.window.open("http://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk="+
-                        encodeURIComponent(I.buffer.document.location)+
-                        "&title="+
-                        encodeURIComponent(I.buffer.document.title),
-                        "bkmk_popup",
-                        "left="+((I.window.screenX||I.window.screenLeft)+10)+
-                          ",top="+((I.window.screenY||I.window.screenTop)+10)+
-                          ",height=420px,width=550px,resizable=1,alwaysRaised=1");
-    I.window.setTimeout(function(){ 
+  var uri = encodeURIComponent(I.buffer.document.location);
+  var title = encodeURIComponent(I.buffer.document.title);
+  var left = (I.window.screenX||I.window.screenLeft)+10;
+  var top = ((I.window.screenY||I.window.screenTop)+10);
+  dump("\n\n");
+  dump("http://www.google.com/bookmarks/mark?op=edit&output=popup&"+"bkmk="+uri+"&title="+title);
+  dump("\n\n");
+  var d = I.window.open("http://www.google.com/bookmarks/mark?op=edit&output=popup&" +
+			"bkmk=" + uri +
+                        "&title=" + title);
+                        //"bkmk_popup");
+                        // "left=" + left + "," +
+                        // "top=" + top + "," +
+                        // "height=420px," +
+			// "width=550px," +
+			// "resizable=1," +
+			// "alwaysRaised=1");
+    I.window.setTimeout(function(){
         d.focus();
     },300)
 }

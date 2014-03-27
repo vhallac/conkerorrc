@@ -1,7 +1,7 @@
 define_webjump("emacswiki",
     "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search&siteurl=emacswiki.org%2F",
     $alternative="http://www.emacswiki.org/");
-
+define_webjump("randemacs", "http://emacswiki.org/emacs?action=random")
 define_webjump("down?",
                function (url) {
                    if (url)
