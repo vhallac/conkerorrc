@@ -24,6 +24,13 @@ function get_config_path(parts) {
     return make_path(get_home_directory(), parts);
 }
 
+// Convenience function to reduce number of lines for loading config files
+// iFile is an nsILocalFile (not sure about nsIFile)
+function load_if_exists(iFile) {
+    if (iFile.exists()) {
+        load(iFile);
+    }
+}
 
 // Advise (hook) a method of an object by calling another function after it
 // returns. It is possible to obtain the return value of the advised function
