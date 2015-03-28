@@ -194,7 +194,7 @@ interactive('goto-google-bookmark',
               goto_google_bookmark_new_buffer_background
             ));
 
-define_key(content_buffer_normal_keymap, 'p', 'goto-google-bookmark');
+define_key(content_buffer_normal_keymap, 'C-c p', 'goto-google-bookmark');
 
 function make_google_bookmark(I) {
   var uri = encodeURIComponent(I.buffer.document.location);
@@ -223,4 +223,4 @@ interactive('make-google-bookmark',
             "Creates a google bookmark",
             make_google_bookmark);
 
-define_key(content_buffer_normal_keymap, 'P', 'make-google-bookmark');
+define_key(content_buffer_normal_keymap, 'C-c P', 'make-google-bookmark');
