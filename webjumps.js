@@ -35,10 +35,12 @@ define_webjump("deb-pkg-backports", "http://packages.debian.org/search?keywords=
 define_webjump("deb-file", "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=stable&arch=any");
 define_webjump("deb-file-testing", "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=testing&arch=any");
 define_webjump("g", "https://www.google.com/search?q=%s");
+define_webjump("ddg", "https://duckduckgo.com/?q=%s");
 define_webjump("torrent", "http://kickass.to/usearch/%s");
 define_webjump("hepsi", "http://www.hepsiburada.com/liste/search.aspx?sText=%s");
 define_webjump("gitti", "http://www.gittigidiyor.com/arama/?k=%s&sra=hpd");
 define_webjump("sahibinden", "http://www.sahibinden.com/arama?query_text=%s");
 define_webjump("minecraft", "http://minecraft.gamepedia.com/index.php?search=%s");
+define_webjump("mvn", "http://mvnrepository.com/search?q=%s");
 /* default webjump */
-read_url_handler_list = [read_url_make_default_webjump_handler("google")];
+read_url_handler_list = [read_url_make_default_webjump_handler("ddg")];
