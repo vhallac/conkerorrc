@@ -4,7 +4,7 @@
     var _env_download_dir = getenv("DOWNLOADDIR");
 
     // Construct a sensible initial save path
-    var _save_path = custom_save_path || _env_download_dir || _home_path;
+    var _save_path = typeof(custom_save_path) === "undefined" ? _env_download_dir || _home_path : custom_save_path;
 
     add_hook("download_added_hook", function(info) {
         _save_path = info.target_file.parent.path;
