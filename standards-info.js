@@ -1,3 +1,4 @@
+
 function standards_info_widget (window) {
     this.class_name = "standards-info-widget";
     text_widget.call (this, window);
@@ -16,7 +17,7 @@ standards_info_widget.prototype.update = function () {
             str = 'quirks';
         else
             str = 'standards';
-    }      
+    }
     this.view.text = str;
 };
 
@@ -46,6 +47,5 @@ function standards_info_widget_disable () {
 define_global_mode ("standards_info_mode",
                     standards_info_widget_enable,
                     standards_info_widget_disable);
-
 
 standards_info_mode (+1);

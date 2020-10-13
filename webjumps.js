@@ -2,23 +2,24 @@ define_webjump("emacswiki",
     "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search&siteurl=emacswiki.org%2F",
     $alternative="http://www.emacswiki.org/");
 define_webjump("randemacs", "http://emacswiki.org/emacs?action=random")
-define_webjump("down?",
-               function (url) {
-                   if (url)
-                       return "http://downforeveryoneorjustme.com/" + url;
-                   else
-                       return "javascript:window.location.href='http://downforeveryoneorjustme.com/'+window.location.href;";
-               },
-               $argument = "optional");
 
-define_webjump("wayback",
-               function (url) {
-                   if (url)
-                       return "http://web.archive.org/web/*/" + url;
-                   else
-                       return "javascript:window.location.href='http://web.archive.org/web/*/'+window.location.href;";
-               },
-               $argument = "optional");
+// define_webjump("down?",
+//                function (url) {
+//                    if (url)
+//                        return "http://downforeveryoneorjustme.com/" + url;
+//                    else
+//                        return "javascript:window.location.href='http://downforeveryoneorjustme.com/'+window.location.href;";
+//                },
+//                $argument = "optional");
+
+// define_webjump("wayback",
+//                function (url) {
+//                    if (url)
+//                        return "http://web.archive.org/web/*/" + url;
+//                    else
+//                        return "javascript:window.location.href='http://web.archive.org/web/*/'+window.location.href;";
+//                },
+//                $argument = "optional");
 
 define_webjump("imdb", "http://imdb.com/find?q=%s");
 define_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
@@ -36,11 +37,15 @@ define_webjump("deb-file", "http://packages.debian.org/search?searchon=contents&
 define_webjump("deb-file-testing", "http://packages.debian.org/search?searchon=contents&keywords=%s&mode=path&suite=testing&arch=any");
 define_webjump("g", "https://www.google.com/search?q=%s");
 define_webjump("ddg", "https://duckduckgo.com/?q=%s");
+define_webjump("ddg", "https://duckduckgo.com/?q=%s");
 define_webjump("torrent", "http://kickass.to/usearch/%s");
 define_webjump("hepsi", "http://www.hepsiburada.com/liste/search.aspx?sText=%s");
 define_webjump("gitti", "http://www.gittigidiyor.com/arama/?k=%s&sra=hpd");
 define_webjump("sahibinden", "http://www.sahibinden.com/arama?query_text=%s");
 define_webjump("minecraft", "http://minecraft.gamepedia.com/index.php?search=%s");
 define_webjump("mvn", "http://mvnrepository.com/search?q=%s");
+define_webjump("sp", "https://startpage.com/do/search?prf=95fa00857b1c3634f33a56a3f0f7e96b&query=%s");
+define_webjump("qw", "https://lite.qwant.com/?l=en&s=0&si=1&q=%s");
+define_webjump("docker", "http://hub.docker.com/search?q=%s");
 /* default webjump */
-read_url_handler_list = [read_url_make_default_webjump_handler("ddg")];
+read_url_handler_list = [read_url_make_default_webjump_handler("sp")];

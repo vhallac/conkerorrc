@@ -9,12 +9,11 @@ function get_host_name() {
 // Construct a path from a base, and list of directories. This function uses the
 // platform's path separator character.
 function make_path(base, parts) {
-    let (path = base) {
-        parts.forEach(function(dir) {
-            path.appendRelativePath(dir);
-        });
-        return path;
-    }
+    var path = base;
+    parts.forEach(function(dir) {
+        path.appendRelativePath(dir);
+    });
+    return path;
 }
 
 // Construct a path relative to the configuration directory, ~/.conkerorrc from

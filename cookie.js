@@ -42,7 +42,7 @@ function cookies_filter_destructive (callback) {
     }
 }
 
-find_cookie = function(host, cookieName) {
+function find_cookie(host, cookieName) {
     var cookies = cookie_manager.getCookiesFromHost(host);
     while (cookies.hasMoreElements()) {
         var cookie = cookies.getNext().QueryInterface(Ci.nsICookie2);
@@ -52,7 +52,7 @@ find_cookie = function(host, cookieName) {
     }
 }
 
-save_cookie = function(cookie, overrides) {
+function save_cookie(cookie, overrides) {
     var obj = cookie.QueryInterface(Ci.nsICookie2);
     var vals = {
         host: obj.host, path: obj.path, name: obj.name, value: obj.value,

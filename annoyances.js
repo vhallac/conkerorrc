@@ -8,7 +8,7 @@ register_user_stylesheet(
         "header.h { position: absolute !important; }"+
     "}"))
 
-use_proxy = false
+var use_proxy = false
 
 function toggle_proxy(pacFileName)
 {
@@ -19,13 +19,14 @@ function toggle_proxy(pacFileName)
     }
     else
     {
-        let (proxy_pac = get_home_directory()) {
-            proxy_pac.appendRelativePath(".conkerorrc");
-            proxy_pac.appendRelativePath("proxy");
-            proxy_pac.appendRelativePath(pacFileName);
-            session_pref('network.proxy.type', 2);
-            session_pref('network.proxy.autoconfig_url', make_uri(proxy_pac).spec);
-        }
+        let proxy_pac = get_home_directory();
+
+        proxy_pac.appendRelativePath(".conkerorrc");
+        proxy_pac.appendRelativePath("proxy");
+        proxy_pac.appendRelativePath(pacFileName);
+        session_pref('network.proxy.type', 2);
+        session_pref('network.proxy.autoconfig_url', make_uri(proxy_pac).spec);
+
         use_proxy = true;
     }
 }

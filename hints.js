@@ -2,10 +2,6 @@
 hints_auto_exit_delay = 1000;
 hints_ambiguous_auto_exit_delay = 3000;
 
-// display properties of the current selected node during
-// the hints interaction.
-hints_display_url_panel = true;
-
 hint_background_color = 'white';
 active_hint_background_color = '#ffcc00';
 

@@ -48,7 +48,18 @@ advise_after(xkcd_mode, "disable", "clearkeymap", function(buffer) {
 // Make html5 the default. I use this method to avoid saving youtube cookies.
 advise_after(youtube_mode, "enable", "force_html5", function(buffer) {
     var cookie = find_cookie("youtube.com", "PREF")
-    if (cookie && !cookie.value.match(/f2=/)) {
-        save_cookie(cookie, {value: cookie.value + "&f2=40000000"});
+    if (cookie) {
+        if (!cookie.value.match(/f2=/)) {
+            save_cookie(cookie, {value: cookie.value + "&f2=40000000"});
+        }
+        else {
+        }
     }
+    else {
+        cookie_manager.add(".youtube.com", "/", "PREF",
+                           "f2=ID=40000000",
+                           false, false, true,
+                           Date.now() + 3600 * 24);
+    }
+
 });
